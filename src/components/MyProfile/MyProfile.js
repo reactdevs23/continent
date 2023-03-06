@@ -8,7 +8,7 @@ import ForSale from "./Posts/ForSale/ForSale";
 import NftPosts from "./Posts/NftPosts";
 import styles from "./styles.module.css";
 import ShareModal from "./ShareModal/ShareModal";
-import SettingModal from "./ShareModal/SettingModal";
+
 import Modal from "../Modal/Modal";
 import Banner from "../Banner/Banner";
 
