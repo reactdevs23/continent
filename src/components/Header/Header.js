@@ -12,7 +12,7 @@ const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   return (
     <>
-      <section className={`${styles.header} `}>
+      <section className={`${styles.header} container`}>
         <img src={logo} alt="#" className={styles.logo} />
         <div className={styles.searchContainer}>
           <div className={styles.inputContainer}>
