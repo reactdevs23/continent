@@ -1,13 +1,21 @@
 import React, { useState } from "react";
-import { copy, friends, collection, user } from "../../images/image";
-import Banner from "../Banner/Banner";
+import { Link } from "react-router-dom";
+import { BiChevronDown } from "react-icons/bi";
+import { user } from "../../images/image";
+import { BsShare } from "react-icons/bs";
+
 import ForSale from "./Posts/ForSale/ForSale";
 import NftPosts from "./Posts/NftPosts";
 import styles from "./styles.module.css";
+import ShareModal from "./ShareModal/ShareModal";
 
-const UserProfile = () => {
+import Modal from "../Modal/Modal";
+import Banner from "../Banner/Banner";
+
+const MyProfile = () => {
   const [nftPosts, setNftPosts] = useState(true);
-  const [friend, setFriend] = useState(false);
+  const [shareModal, setShareModal] = useState(false);
+
   return (
     <>
       <Banner />
@@ -20,7 +28,7 @@ const UserProfile = () => {
               <span className={`${styles.text} ${styles.address}`}>
                 0xe0c6...1db9
               </span>
-              <img src={copy} alt="#" className={styles.copyIcon} />
+              <BiChevronDown className={styles.downArrow} />
             </div>
             <p className={styles.text}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -36,32 +44,17 @@ const UserProfile = () => {
             </a>
           </div>
           <div className={styles.actionContainer}>
-            {" "}
-            {friend ? (
-              <button
-                className={`${styles.button} ${styles.activeButton}`}
-                onClick={() => setFriend((prev) => !prev)}
-              >
-                Unfriend
-              </button>
-            ) : (
-              <button
-                className={`${styles.button} ${styles.activeButton}`}
-                onClick={() => setFriend((prev) => !prev)}
-              >
-                Add friend
-              </button>
-            )}{" "}
-            <button className={`${styles.button} `}>Message</button>
-            <div className={styles.infoContainer}>
-              <div className={styles.info}>
-                <img src={friends} alt="#" className={styles.mutualImage} />
-                <p className={styles.infoText}>61 mutual friends</p>
-              </div>
-              <div className={styles.info}>
-                <img src={collection} alt="#" className={styles.mutualImage} />
-                <p className={styles.infoText}>4 mutual collections</p>
-              </div>
+            <Link
+              to="/editprofile"
+              className={`${styles.button} ${styles.activeButton}`}
+            >
+              Edit profile
+            </Link>{" "}
+            <div
+              className={styles.shareContainer}
+              onClick={() => setShareModal((prev) => !prev)}
+            >
+              <BsShare />
             </div>
           </div>
         </div>
@@ -85,9 +78,14 @@ const UserProfile = () => {
           )}
         </div>{" "}
         {nftPosts ? <NftPosts /> : <ForSale />}
+        {shareModal && (
+          <Modal setModal={setShareModal}>
+            <ShareModal setModal={setShareModal} />
+          </Modal>
+        )}
       </div>
     </>
   );
 };
 
-export default UserProfile;
+export default MyProfile;

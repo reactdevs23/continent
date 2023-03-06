@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { nft, eth } from "../../../../images/image";
-import Modal from "./Modal/Modal";
+import Modal from "../../../Modal/Modal";
+import Details from "./Details/Details";
 import styles from "./styles.module.css";
 
 const ForSale = () => {
@@ -108,16 +109,17 @@ const ForSale = () => {
     <>
       <div className={styles.posts}>
         {posts.map((el, i) => (
-          <div className={styles.post} key={i}>
+          <div
+            className={styles.post}
+            key={i}
+            onClick={() => setActiveDetails(i + 1)}
+          >
             <img src={el.img} alt="#" className={styles.image} />{" "}
             <div className={styles.detailsContainer}>
               <p className={styles.id}>
                 {el.name} #{el.id}
               </p>
-              <div
-                className={styles.valueContainer}
-                onClick={() => setActiveDetails(i + 1)}
-              >
+              <div className={styles.valueContainer}>
                 <span className={styles.value}>{el.value}</span>
                 <img src={eth} alt="#" className={styles.ethIcon} />
               </div>
@@ -127,7 +129,9 @@ const ForSale = () => {
         ))}
       </div>
       {activeDetails && (
-        <Modal {...posts[activeDetails - 1]} setModal={setActiveDetails} />
+        <Modal setModal={setActiveDetails} background="rgba(9, 13, 36, 0.67)">
+          <Details {...posts[activeDetails - 1]} setModal={setActiveDetails} />
+        </Modal>
       )}
     </>
   );
