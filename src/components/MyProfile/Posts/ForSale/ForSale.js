@@ -129,7 +129,7 @@ const ForSale = () => {
         ))}
       </div>
       {activeDetails && (
-        <Modal setModal={setActiveDetails}>
+        <Modal setModal={setActiveDetails} background="rgba(9, 13, 36, 0.67)">
           <Details {...posts[activeDetails - 1]} setModal={setActiveDetails} />
         </Modal>
       )}

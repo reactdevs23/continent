@@ -1,21 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { home, wallet, marketplace, explore } from "../../images/image.js";
 import styles from "./styles.module.css";
 
 const Sidebar = ({ showSidebar }) => {
   const navItems = [
-    { icon: home, navItem: "Home" },
-    { icon: wallet, navItem: "Wallet" },
-    { icon: marketplace, navItem: "Marketplace" },
-    { icon: explore, navItem: "Explore" },
+    { icon: wallet, navItem: "Wallet", to: "#" },
+    { icon: marketplace, navItem: "Marketplace", to: "#" },
+    { icon: explore, navItem: "Explore", to: "#" },
   ];
   return (
     <div className={` ${styles.sidebar} ${showSidebar && styles.showSidebar}`}>
+      <div className={styles.navItemContainer}>
+        {" "}
+        <img src={home} alt="#" className={styles.icon} />
+        <Link to="/" className={styles.navItem}>
+          Home
+        </Link>
+      </div>
       {navItems.map((el, i) => (
-        <div className={styles.navItemContainer}>
+        <div className={styles.navItemContainer} key={i}>
           {" "}
           <img src={el.icon} alt={el.name} className={styles.icon} />
-          <a href="#/" className={styles.navItem}>
+          <a href={el.to} className={styles.navItem}>
             {el.navItem}
           </a>
         </div>
