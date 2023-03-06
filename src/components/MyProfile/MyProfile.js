@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 import { BiChevronDown } from "react-icons/bi";
 import { user } from "../../images/image";
 import { BsShare } from "react-icons/bs";
-import { FiSettings } from "react-icons/fi";
+
 import ForSale from "./Posts/ForSale/ForSale";
 import NftPosts from "./Posts/NftPosts";
 import styles from "./styles.module.css";
-import ShareModal from "./ShareAndSettingsModal/ShareModal";
-import SettingModal from "./ShareAndSettingsModal/SettingModal";
+import ShareModal from "./ShareModal/ShareModal";
+import SettingModal from "./ShareModal/SettingModal";
 import Modal from "../Modal/Modal";
 import Banner from "../Banner/Banner";
 
 const MyProfile = () => {
   const [nftPosts, setNftPosts] = useState(true);
   const [shareModal, setShareModal] = useState(false);
-  const [settingModal, setSettingModal] = useState(false);
+
   return (
     <>
       <Banner />
@@ -56,12 +56,6 @@ const MyProfile = () => {
             >
               <BsShare />
             </div>
-            {/* <div
-              className={styles.shareContainer}
-              onClick={() => setSettingModal((prev) => !prev)}
-            >
-              <FiSettings />
-            </div> */}
           </div>
         </div>
         <div className={styles.postCategoryContainer}>
@@ -87,11 +81,6 @@ const MyProfile = () => {
         {shareModal && (
           <Modal setModal={setShareModal}>
             <ShareModal setModal={setShareModal} />
-          </Modal>
-        )}
-        {settingModal && (
-          <Modal setModal={setShareModal}>
-            <SettingModal setModal={setSettingModal} />
           </Modal>
         )}
       </div>
