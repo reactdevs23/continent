@@ -3,7 +3,7 @@
 }
 .profileHeader {
   display: grid;
-  grid-template-columns: 1fr 224px;
+  grid-template-columns: 1fr 177px;
   align-items: start;
   gap: 50px;
   padding-top: 65px;

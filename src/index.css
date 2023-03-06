@@ -62,6 +62,7 @@ button {
 }
 .rightSide {
   padding-left: 265px;
+
   background-color: var(--primary-bg);
 }
 .wrapper {

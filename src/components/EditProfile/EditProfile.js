@@ -4,6 +4,7 @@ import { BiEditAlt } from "react-icons/bi";
 import { user, banner } from "../../images/image";
 import Input from "../Input/Input";
 import styles from "./styles.module.css";
+import { NavLink } from "react-router-dom";
 
 const EditProfile = () => {
   const [values, setValues] = useState({
@@ -33,19 +34,20 @@ const EditProfile = () => {
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+  const tabs = [
+    { navItem: "Edit profile", to: "/editProfile" },
+    { navItem: "Notifications", to: "/notifications" },
+    { navItem: "Edit profile", to: "/accountsupport" },
+  ];
   return (
     <div className={`${styles.profileWrapper} r`}>
       {" "}
       <div className={styles.tabsContainer}>
-        <a href="#" className={styles.text}>
-          Edit profile
-        </a>
-        <a href="#" className={styles.text}>
-          Notifications
-        </a>
-        <a href="#" className={styles.text}>
-          Account support
-        </a>
+        {tabs.map((el, i) => (
+          <NavLink to={el.to} key={i} className={styles.text}>
+            {el.navItem}
+          </NavLink>
+        ))}
       </div>
       <form className={`${styles.profile} `}>
         <div>
